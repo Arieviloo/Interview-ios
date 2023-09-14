@@ -19,7 +19,7 @@
 		B163815028775CAD0096BF33 /* ListContactViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B163814F28775CAD0096BF33 /* ListContactViewModelTests.swift */; };
 		E261B8C72AB210B90073BAD8 /* ListContactsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261B8C62AB210B90073BAD8 /* ListContactsViewControllerTests.swift */; };
 		E2A6D35D2AB37DF7008F041D /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6D35C2AB37DF7008F041D /* String+Localizable.swift */; };
-		E2A6D35F2AB37FD0008F041D /* ListContactsStrings.strings in Sources */ = {isa = PBXBuildFile; fileRef = E2A6D3612AB37FD0008F041D /* ListContactsStrings.strings */; };
+		E2A6D35F2AB37FD0008F041D /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = E2A6D3612AB37FD0008F041D /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 		B163814F28775CAD0096BF33 /* ListContactViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactViewModelTests.swift; sourceTree = "<group>"; };
 		E261B8C62AB210B90073BAD8 /* ListContactsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactsViewControllerTests.swift; sourceTree = "<group>"; };
 		E2A6D35C2AB37DF7008F041D /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
-		E2A6D3602AB37FD0008F041D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ListContactsStrings.strings; sourceTree = "<group>"; };
+		E2A6D3602AB37FD0008F041D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +224,7 @@
 		E2A6D35E2AB37F87008F041D /* LocalizableStrings */ = {
 			isa = PBXGroup;
 			children = (
-				E2A6D3612AB37FD0008F041D /* ListContactsStrings.strings */,
+				E2A6D3612AB37FD0008F041D /* Localizable.strings */,
 			);
 			path = LocalizableStrings;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 				6AB24DF523EB556700530BA5 /* ListContactsService.swift in Sources */,
 				6AB24DC023EB546D00530BA5 /* AppDelegate.swift in Sources */,
 				E2A6D35D2AB37DF7008F041D /* String+Localizable.swift in Sources */,
-				E2A6D35F2AB37FD0008F041D /* ListContactsStrings.strings in Sources */,
+				E2A6D35F2AB37FD0008F041D /* Localizable.strings in Sources */,
 				6AB24DF223EB554300530BA5 /* ListContactsViewModel.swift in Sources */,
 				6AB24DF823EB558D00530BA5 /* ContactCell.swift in Sources */,
 			);
@@ -369,12 +369,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E2A6D3612AB37FD0008F041D /* ListContactsStrings.strings */ = {
+		E2A6D3612AB37FD0008F041D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E2A6D3602AB37FD0008F041D /* en */,
 			);
-			name = ListContactsStrings.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

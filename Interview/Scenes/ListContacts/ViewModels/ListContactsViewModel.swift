@@ -7,8 +7,8 @@ class ListContactsViewModel {
     
     init() { }
     
-    func setupTitle() -> String {
-        let title = "titleText".localized(fileName: "ListContactsStrings")
+    func getNavigationBarTitle() -> String {
+        let title = String(localizedKey: "titleText")
         return title
     }
     

@@ -8,7 +8,8 @@
 import Foundation
 
 extension String {
-    func localized( fileName: String ) -> String {
-        NSLocalizedString(self, tableName: fileName, bundle: .main, value: self, comment: self)
+    init(localizedKey:String) {
+        let initText = NSLocalizedString(localizedKey, tableName: "Localizable", bundle: .main, value: "", comment: "")
+        self.init(initText)
     }
 }

@@ -54,9 +54,8 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         loadData()
     }
     
-    
-    func setupNavigation() {
-        title = viewModel.setupTitle()
+    private func setupNavigation() {
+        title = viewModel.getNavigationBarTitle()
     }
     
     func configureViews() {
