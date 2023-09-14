@@ -7,6 +7,11 @@ class ListContactsViewModel {
     
     init() { }
     
+    func setupTitle() -> String {
+        let title = "titleText".localized(fileName: "ListContactsStrings")
+        return title
+    }
+    
     func loadContacts(_ completion: @escaping ([Contact]?, Error?) -> Void) {
         self.completion = completion
         service.fetchContacts { contacts, err in

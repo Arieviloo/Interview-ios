@@ -9,6 +9,6 @@ final class ListContactsViewControllerTests: XCTestCase {
     func testTitleInitialIsCorrect() {
         sut.viewDidLoad()
         let title = sut.tabBarItem.title
-        XCTAssertEqual(title, "Ultimate Mortal Kombat 3")
+        XCTAssertEqual(title, "Lista de contatos")
     }
 }

@@ -48,13 +48,15 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Ultimate Mortal Kombat 3"
         viewModel = ListContactsViewModel()
+        setupNavigation()
         configureViews()
-        
-        navigationController?.title = "Lista de contatos"
-        
         loadData()
+    }
+    
+    
+    func setupNavigation() {
+        title = viewModel.setupTitle()
     }
     
     func configureViews() {
