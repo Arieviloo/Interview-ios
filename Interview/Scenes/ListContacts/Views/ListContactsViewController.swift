@@ -86,11 +86,17 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         cell.fullnameLabel.text = contact.name
         
         if let urlPhoto = URL(string: contact.photoURL) {
-            do {
-                let data = try Data(contentsOf: urlPhoto)
-                let image = UIImage(data: data)
-                cell.contactImage.image = image
-            } catch _ {}
+            URLSession.shared.dataTask(with: urlPhoto) { (data, _, error) in
+                if let error {
+                    print("error \(#function) -> \(error)")
+                }
+                
+                guard let data else { return }
+                
+                DispatchQueue.main.async {
+                    cell.contactImage.image = UIImage(data: data)
+                }
+            }.resume()
         }
         
         return cell
