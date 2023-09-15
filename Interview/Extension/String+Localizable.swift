@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     init(localizedKey:String) {
-        let initText = NSLocalizedString(localizedKey, tableName: "Localizable", bundle: .main, value: "", comment: "")
+        let initText = NSLocalizedString(localizedKey, comment: "")
         self.init(initText)
     }
 }
