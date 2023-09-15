@@ -7,6 +7,10 @@ class ListContactsViewModel {
     
     init() { }
     
+    func getNavigationBarTitle() -> String {
+        String(localizedKey: "titleText")
+    }
+    
     func loadContacts(_ completion: @escaping ([Contact]?, Error?) -> Void) {
         self.completion = completion
         service.fetchContacts { contacts, err in
