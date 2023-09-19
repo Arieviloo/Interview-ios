@@ -88,7 +88,7 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         if let urlPhoto = URL(string: contact.photoURL) {
             URLSession.shared.dataTask(with: urlPhoto) { (data, _, error) in
                 if let error {
-                    print("error \(#function) -> \(error)")
+                    cell.contactImage.image = UIImage(named: "sem-imagem")
                 }
                 
                 guard let data else { return }

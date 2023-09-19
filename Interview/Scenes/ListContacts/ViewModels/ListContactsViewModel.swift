@@ -27,4 +27,5 @@ class ListContactsViewModel {
             completion?(contacts, nil)
         }
     }
+
 }
