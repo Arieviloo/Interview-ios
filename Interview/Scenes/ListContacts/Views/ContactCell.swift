@@ -28,6 +28,14 @@ class ContactCell: UITableViewCell {
         configureViews()
     }
     
+    func setImageCell(data: Data) {
+        contactImage.image = UIImage(data:  data)
+    }
+    
+    func setTextNameCell(name: String) {
+        fullnameLabel.text = name
+    }
+    
     func configureViews() {
         contentView.addSubview(contactImage)
         contentView.addSubview(fullnameLabel)

@@ -1,6 +1,8 @@
 import UIKit
 
 class UserIdsLegacy {
+    
+    
     static let legacyIds = [10, 11, 12, 13]
     
     static func isLegacy(id: Int) -> Bool {
@@ -29,7 +31,7 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }()
     
     var contacts = [Contact]()
-    var viewModel: ListContactsViewModel!
+    var viewModel: ListContactsViewModel?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -55,7 +57,7 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     private func setupNavigation() {
-        title = viewModel.getNavigationBarTitle()
+        title = viewModel?.getNavigationBarTitle()
     }
     
     func configureViews() {
@@ -83,22 +85,21 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         let contact = contacts[indexPath.row]
-        cell.fullnameLabel.text = contact.name
         
         if let urlPhoto = URL(string: contact.photoURL) {
-            URLSession.shared.dataTask(with: urlPhoto) { (data, _, error) in
-                if let error {
-                    cell.contactImage.image = UIImage(named: "sem-imagem")
+            viewModel?.getImageURl(urlPhoto: urlPhoto) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        cell.setImageCell(data: data)
+                        cell.setTextNameCell(name: contact.name)
+                    }
+                    
+                case .failure(let error):
+                    print(error)
                 }
-                
-                guard let data else { return }
-                
-                DispatchQueue.main.async {
-                    cell.contactImage.image = UIImage(data: data)
-                }
-            }.resume()
+            }
         }
-        
         return cell
     }
     
@@ -118,7 +119,7 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func loadData() {
-        viewModel.loadContacts { contacts, error in
+        viewModel?.loadContacts { contacts, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print(error)
