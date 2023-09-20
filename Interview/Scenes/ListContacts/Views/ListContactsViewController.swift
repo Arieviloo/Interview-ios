@@ -31,9 +31,10 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }()
     
     var contacts = [Contact]()
-    var viewModel: ListContactsViewModel?
+    var viewModel: ListContactsViewModel
     
     init() {
+        viewModel = ListContactsViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,14 +51,13 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListContactsViewModel()
         setupNavigation()
         configureViews()
         loadData()
     }
     
     private func setupNavigation() {
-        title = viewModel?.getNavigationBarTitle()
+        title = viewModel.getNavigationBarTitle()
     }
     
     func configureViews() {
@@ -85,18 +85,18 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         let contact = contacts[indexPath.row]
+        cell.setTextNameCell(name: contact.name)
         
         if let urlPhoto = URL(string: contact.photoURL) {
-            viewModel?.getImageURl(urlPhoto: urlPhoto) { result in
+            viewModel.getImage(from: urlPhoto) { result in
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
                         cell.setImageCell(data: data)
-                        cell.setTextNameCell(name: contact.name)
                     }
                     
                 case .failure(let error):
-                    print(error)
+                    cell.setImageErrorCell(name: "sem-imagem")
                 }
             }
         }
@@ -119,7 +119,7 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func loadData() {
-        viewModel?.loadContacts { contacts, error in
+        viewModel.loadContacts { contacts, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print(error)

@@ -32,6 +32,10 @@ class ContactCell: UITableViewCell {
         contactImage.image = UIImage(data:  data)
     }
     
+    func setImageErrorCell(name: String) {
+        contactImage.image = UIImage(named: name)
+    }
+    
     func setTextNameCell(name: String) {
         fullnameLabel.text = name
     }

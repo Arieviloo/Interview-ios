@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 class ListContactsViewModel {
     private let service = ListContactService()
@@ -29,8 +28,8 @@ class ListContactsViewModel {
         }
     }
     
-    func getImageURl( urlPhoto: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        URLSession.shared.dataTask(with: urlPhoto) { (data, _, error) in
+    func getImage(from: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+        URLSession.shared.dataTask(with: from) { (data, _, error) in
             
             if let error {
                 completion(.failure(error))
