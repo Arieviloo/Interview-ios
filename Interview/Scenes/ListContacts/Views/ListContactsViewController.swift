@@ -1,6 +1,8 @@
 import UIKit
 
 class UserIdsLegacy {
+    
+    
     static let legacyIds = [10, 11, 12, 13]
     
     static func isLegacy(id: Int) -> Bool {
@@ -29,9 +31,10 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     }()
     
     var contacts = [Contact]()
-    var viewModel: ListContactsViewModel!
+    var viewModel: ListContactsViewModel
     
     init() {
+        viewModel = ListContactsViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,7 +51,6 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListContactsViewModel()
         setupNavigation()
         configureViews()
         loadData()
@@ -83,16 +85,21 @@ class ListContactsViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         let contact = contacts[indexPath.row]
-        cell.fullnameLabel.text = contact.name
+        cell.setTextNameCell(name: contact.name)
         
         if let urlPhoto = URL(string: contact.photoURL) {
-            do {
-                let data = try Data(contentsOf: urlPhoto)
-                let image = UIImage(data: data)
-                cell.contactImage.image = image
-            } catch _ {}
+            viewModel.getImage(from: urlPhoto) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        cell.setImageCell(data: data)
+                    }
+                    
+                case .failure(let error):
+                    cell.setImageErrorCell(name: "sem-imagem")
+                }
+            }
         }
-        
         return cell
     }
     
