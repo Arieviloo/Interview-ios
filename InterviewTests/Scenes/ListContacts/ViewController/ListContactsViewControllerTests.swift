@@ -17,7 +17,7 @@ final class ListContactsViewControllerTests: XCTestCase {
         XCTAssertEqual(title, "Lista de contatos")
     }
     
-    func testDataIsPresentCorrect() {
+    func testDataPresentIsCorrect() {
         sut.contacts = mock
         sut.tableView.reloadData()
         let primaryCell = sut.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ContactCell
